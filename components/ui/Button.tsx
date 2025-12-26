@@ -1,8 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
   variant?: 'primary' | 'secondary' | 'ghost';
   children: React.ReactNode;
 }
@@ -18,7 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
   const variants = {
     primary: 'bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white',
     secondary: 'glass glass-hover',
-    ghost: 'hover:bg-white/5',
+    ghost: 'hover:bg-white/5 dark:hover:bg-white/5 hover:bg-slate-100',
   };
 
   return (
