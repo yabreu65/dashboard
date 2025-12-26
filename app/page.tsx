@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex">
+    <div className="min-h-screen bg-slate-950 dark:bg-slate-950 bg-white dark:text-white text-slate-900 flex transition-colors duration-300">
       {/* Sidebar */}
       <Sidebar
         isOpen={isOpen}

@@ -8,6 +8,32 @@
   --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* Dark Theme (default) */
+.dark {
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --hover-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Light Theme */
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --border-color: rgba(15, 23, 42, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --hover-bg: rgba(15, 23, 42, 0.05);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,16 +42,28 @@
 
 body {
   font-family: var(--font-plus-jakarta);
-  background: #020617;
-  color: white;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Glass Morphism Utilities */
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--glass-bg);
     backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+  }
+
+  .dark .glass {
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .light .glass {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   }
 
   .glass-hover {
@@ -33,7 +71,15 @@ body {
   }
 
   .glass-hover:hover {
+    background: var(--hover-bg);
+  }
+
+  .dark .glass-hover:hover {
     background: rgba(255, 255, 255, 0.06);
+  }
+
+  .light .glass-hover:hover {
+    background: rgba(15, 23, 42, 0.08);
   }
 
   .gradient-border {
